@@ -1,0 +1,32 @@
+<div class="container">
+
+  <form #blogform="ngForm" (ngSubmit)="editBlog()">
+    <div class="form-group">
+      <label for="InputText">Blog Title</label>
+      <input type="text" class="form-control"  name="blogtitle" [(ngModel)]="currentblogvalue.title"  #title="ngModel" id="exampleInputEmail1">
+      
+  
+    </div>
+   
+    
+  
+  
+    <div class="form-group">
+      <label for="InputDesc">Description</label>
+      <input type="text" class="form-control"  name="blogdescription" [(ngModel)]="currentblogvalue.description"   id="InputDesc">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Blog body</label>
+      <textarea class="form-control"  name="blogbody" [(ngModel)]="currentblogvalue.bodyHtml"    id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label>Example select</label>
+      <select class="form-control" id="category" [(ngModel)]="currentblogvalue.category" #category="ngModel" name="blogcategory">
+        <option *ngFor="let category of possibleblogcategory" [value]="category">{{category}}</option>
+        
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="!blogform.form.valid">Edit blog</button>
+  </form>
+  </div>

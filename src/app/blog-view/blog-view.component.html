@@ -1,0 +1,31 @@
+<div class="container">
+<div class="row" *ngIf="currentblogvalue">
+  <div class="col">
+<div class="card text-center cardbody">
+  <div class="card-header bg-primary">
+    {{currentblogvalue.title}}
+  </div>
+  <div class="card-body ">
+    <h5 class="card-title"> {{currentblogvalue.author}}</h5>
+    <p class="card-text" [innerHtml]= "currentblogvalue.blogText"></p>
+
+    <p *ngIf="currentblogvalue.tags.length !=undefined && currentblogvalue.tags.length>0">
+      tags:<span *ngFor="let tags of currentblogvalue.tags;let first=first;let last=last">
+        {{tags}}{{last ?'':','}}
+      </span>
+
+    </p>
+
+    <a [routerLink]="['/edit',currentblogvalue.blogId]" class="btn btn-warning">Edit</a>
+    &nbsp;&nbsp;&nbsp;
+    <a class="btn btn-danger" (click)="deleteThisBlog()">Delete</a>
+    &nbsp;&nbsp;&nbsp;
+    <a class="btn btn-success" (click)="goBack()">Go Back</a>
+  </div>
+  <div class="card-footer text bg-primary">
+      {{currentblogvalue.lastModified | date}} 
+  </div>
+</div>
+</div>
+</div>
+</div>
